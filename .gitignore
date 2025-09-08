@@ -8,3 +8,9 @@
 *.tfstate
 .terraform
 .terraform.lock.hcl
+
+# EC2
+.ssh/*
+
+# Gitkeep
+!.gitkeep

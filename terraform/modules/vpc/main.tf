@@ -97,13 +97,15 @@ resource "aws_default_security_group" "main" {
 }
 
 ## インターネット -> VPC: SSH 許可
-# resource "aws_vpc_security_group_ingress_rule" "ingress_ssh" {
-#   security_group_id = aws_default_security_group.main.id
-#   cidr_ipv4         = "0.0.0.0/0"
-#   ip_protocol       = "tcp"
-#   from_port         = 22
-#   to_port           = 22
-# }
+resource "aws_vpc_security_group_ingress_rule" "ingress_ssh" {
+  count = var.allow_ssh ? 1 : 0 # true の場合のみ作成
+
+  security_group_id = aws_default_security_group.main.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "tcp"
+  from_port         = 22
+  to_port           = 22
+}
 
 ## インターネット -> VPC: HTTP 許可
 resource "aws_vpc_security_group_ingress_rule" "ingress_http" {

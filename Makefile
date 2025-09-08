@@ -27,25 +27,13 @@ $(1)-destroy:
 	@echo "=== $(1) 環境の削除 ==="
 	terraform -chdir=terraform/environments/$(1) destroy
 
-# fmt
-$(1)-fmt:
-	@echo "=== $(1) 環境のフォーマット ==="
-	terraform -chdir=terraform/environments/$(1) fmt -recursive
-
-# validate
-$(1)-validate:
-	@echo "=== $(1) 環境の検証 ==="
-	terraform -chdir=terraform/environments/$(1) validate
-
-# clean
-$(1)-clean:
-	@echo "=== $(1) 環境のクリーンアップ ==="
-	rm -rf terraform/environments/$(1)/.terraform
-	rm -f terraform/environments/$(1)/terraform.tfstate.backup
-	rm -f terraform/environments/$(1)/.terraform.lock.hcl
-
-.PHONY: $(1)-init $(1)-plan $(1)-apply $(1)-destroy $(1)-fmt $(1)-validate $(1)-clean
+.PHONY: $(1)-init $(1)-plan $(1)-apply $(1)-destroy
 endef
 
 # 各環境に対してターゲットを生成
 $(foreach env,$(ENVIRONMENTS),$(eval $(call make-env-targets,$(env))))
+
+ssh:
+	ssh -i ~/app/.ssh/usecase-1-key.pem ec2-user@$(shell cat ~/app/.ssh/usecase-1-ip.txt)
+
+.PHONY: test

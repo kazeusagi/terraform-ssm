@@ -1,0 +1,30 @@
+{
+  "name": "Terraform SSM",
+  "image": "debian:bookworm",
+  "runArgs": [
+    "--env-file",
+    ".devcontainer/.env"
+  ],
+  "remoteUser": "user",
+  "workspaceFolder": "/home/user/app",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind", // ワークスペース
+    "source=${localWorkspaceFolder}/.aws,target=/home/user/.aws,type=bind" // AWS
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "user",
+      "userGid": "1000",
+      "userUid": "1000"
+    },
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "oderwat.indent-rainbow"
+      ]
+    }
+  }
+}

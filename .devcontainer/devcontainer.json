@@ -7,6 +7,7 @@
   ],
   "remoteUser": "user",
   "workspaceFolder": "/home/user/app",
+  "onCreateCommand": ".devcontainer/onCreateCommand.sh",
   "mounts": [
     "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind", // ワークスペース
     "source=${localWorkspaceFolder}/.aws,target=/home/user/.aws,type=bind" // AWS

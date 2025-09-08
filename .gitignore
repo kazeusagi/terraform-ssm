@@ -1,2 +1,10 @@
-.aws
+# General
 .env
+
+# AWS
+.aws
+
+# Terraform
+*.tfstate
+.terraform
+.terraform.lock.hcl

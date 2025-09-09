@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 
 
 # Subnet
-resource "aws_subnet" "public_1a" {
+resource "aws_subnet" "public" {
   vpc_id = aws_vpc.main.id
 
   cidr_block              = "10.0.1.0/24"
@@ -51,8 +51,8 @@ resource "aws_default_route_table" "public" {
     Name = "${var.name}-rtb-public"
   }
 }
-resource "aws_route_table_association" "public_1a" {
-  subnet_id      = aws_subnet.public_1a.id
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public.id
   route_table_id = aws_default_route_table.public.id
 }
 
@@ -61,7 +61,7 @@ resource "aws_route_table_association" "public_1a" {
 # Default Network ACL
 resource "aws_default_network_acl" "main" {
   default_network_acl_id = aws_vpc.main.default_network_acl_id
-  subnet_ids             = [aws_subnet.public_1a.id]
+  subnet_ids             = [aws_subnet.public.id]
 
   ingress {
     protocol   = -1

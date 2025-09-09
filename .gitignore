@@ -11,6 +11,7 @@
 
 # EC2
 .ssh/*
+# .ssm/*
 
 # Gitkeep
 !.gitkeep

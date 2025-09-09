@@ -1,7 +1,7 @@
 # 複数環境対応 Terraform Makefile
 
 # 環境のリスト
-ENVIRONMENTS = usecase-1
+ENVIRONMENTS = usecase-1 usecase-3
 
 # 各環境用のターゲットを動的生成する関数
 define make-env-targets

@@ -49,7 +49,10 @@ jobs:
           echo "command_id=$COMMAND_ID" >> $GITHUB_OUTPUT
 
       - name: SSM Wait Command
-        run: aws ssm wait command-executed --command-id ${{ steps.send_command.outputs.command_id }}
+        run: |
+          aws ssm wait command-executed \
+            --instance-id ${{ env.INSTANCE_ID }} \
+            --command-id ${{ steps.send_command.outputs.command_id }}
 
       - name: SSM Get Command Result
         run: |

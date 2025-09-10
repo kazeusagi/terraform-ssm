@@ -6,9 +6,6 @@ module "iam_oidc_provider" {
     "repo:kazeusagi/terraform-ssm:environment:prod"
   ]
   allow_ssm = true
-  allowed_instance_arns = [
-    data.terraform_remote_state.usecase_1.outputs.instance_arn # usecase-1で作成したEC2インスタンスのARN
-  ]
 }
 
 

@@ -8,8 +8,3 @@ variable "allow_ssm" {
   type        = bool
   default     = false
 }
-
-variable "allowed_instance_arns" {
-  description = "許可するインスタンスのARNのリスト"
-  type        = list(string)
-}

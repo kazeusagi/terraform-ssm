@@ -6,6 +6,6 @@ data "aws_iam_policy_document" "main" {
       "ssm:SendCommand",
       "ssm:GetCommandInvocation"
     ]
-    resources = var.allowed_instance_arns
+    resources = ["*"]
   }
 }

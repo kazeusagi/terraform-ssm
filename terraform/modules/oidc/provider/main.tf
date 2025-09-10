@@ -18,9 +18,10 @@ module "iam_oidc_role" {
 
 # SSMへの最小権限のポリシー
 module "iam_oidc_policy_ssm" {
-  count  = var.allow_ssm ? 1 : 0
-  source = "../policy/ssm"
-  name   = "GithubActionsOIDCRole_SSMPolicy"
+  count                 = var.allow_ssm ? 1 : 0
+  source                = "../policy/ssm"
+  name                  = "GithubActionsOIDCRole_SSMPolicy"
+  allowed_instance_arns = var.allowed_instance_arns
 }
 
 

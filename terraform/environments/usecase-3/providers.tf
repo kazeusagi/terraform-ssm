@@ -10,3 +10,8 @@ provider "aws" {
     }
   }
 }
+
+provider "github" {
+  # token = $GITHUB_TOKEN
+  # owner = $GITHUB_OWNER
+}

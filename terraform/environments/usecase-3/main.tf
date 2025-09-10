@@ -4,3 +4,12 @@ module "iam_oidc_provider" {
   allowed_github_repositories = ["repo:HC-Produce/edinet-scraper:environment:dev"]
   allow_ssm                   = true
 }
+
+module "github_env" {
+  source  = "../../modules/github/env"
+  name    = "dev"
+  secrets = {}
+  variables = {
+    AWS_REGION = "ap-northeast-1"
+  }
+}

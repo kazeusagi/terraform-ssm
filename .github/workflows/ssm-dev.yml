@@ -1,0 +1,17 @@
+name: SSM | Dev
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  plan:
+    name: SSM workflow call
+    uses: ./.github/workflows/ssm.yml
+    permissions:
+      id-token: write
+      contents: read
+    with:
+      environment: dev
+    secrets: inherit

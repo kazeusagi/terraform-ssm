@@ -42,7 +42,9 @@ jobs:
               "echo Hello",
               "echo From",
               "echo Github Actions !"
-            ]'
+            ]' \
+            --output text \
+            --query 'Command.CommandId'
           )
           echo "command_id=$COMMAND_ID" >> $GITHUB_OUTPUT
 

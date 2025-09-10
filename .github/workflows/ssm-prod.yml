@@ -1,7 +1,7 @@
-name: SSM | Dev
+name: SSM | Prod
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 

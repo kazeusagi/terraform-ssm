@@ -10,7 +10,7 @@ on:
         description: 対象の環境(dev, stg, prod)
 
 env:
-  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_REGION: ${{ vars.AWS_REGION }}
   ASSUME_ROLE_ARN: ${{ secrets.ASSUME_ROLE_ARN }}
   INSTANCE_ID: ${{ secrets.INSTANCE_ID }}
 

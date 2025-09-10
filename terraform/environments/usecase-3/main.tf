@@ -5,9 +5,26 @@ module "iam_oidc_provider" {
   allow_ssm                   = true
 }
 
-module "github_env" {
+
+
+# Github Actions Environment
+## dev
+module "github_env_dev" {
   source = "../../modules/github/env"
   name   = "dev"
+  secrets = {
+    ASSUME_ROLE_ARN = module.iam_oidc_provider.role_arn
+    INSTANCE_ID     = data.terraform_remote_state.usecase_1.outputs.instance_id
+  }
+  variables = {
+    AWS_REGION = "ap-northeast-1"
+  }
+}
+
+## prod
+module "github_env_prod" {
+  source = "../../modules/github/env"
+  name   = "prod"
   secrets = {
     ASSUME_ROLE_ARN = module.iam_oidc_provider.role_arn
     INSTANCE_ID     = data.terraform_remote_state.usecase_1.outputs.instance_id

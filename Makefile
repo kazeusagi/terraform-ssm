@@ -36,4 +36,7 @@ $(foreach env,$(ENVIRONMENTS),$(eval $(call make-env-targets,$(env))))
 ssh:
 	ssh -i ~/app/.ssh/usecase-1-key.pem ec2-user@$(shell cat ~/app/.ssh/usecase-1-ip.txt)
 
-.PHONY: test
+ssm:
+	aws ssm start-session --target $(shell cat ~/app/.ssm/usecase-1-instance-id.txt)
+
+.PHONY: test ssh ssm

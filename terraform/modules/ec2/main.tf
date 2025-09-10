@@ -65,7 +65,7 @@ resource "local_file" "ip_address" {
 # インスタンスIDをローカルに保存: enable_ssm が true の場合のみ保存
 resource "local_file" "instance_id" {
   count      = var.enable_ssm ? 1 : 0
-  filename   = "${path.cwd}/.ssh/${var.name}-instance-id.txt"
+  filename   = "${path.cwd}/.ssm/${var.name}-instance-id.txt"
   content    = aws_instance.main.id
   depends_on = [aws_instance.main]
 }

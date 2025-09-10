@@ -59,5 +59,9 @@ jobs:
           aws ssm get-command-invocation \
             --instance-id ${{ env.INSTANCE_ID }} \
             --command-id ${{ steps.send_command.outputs.command_id }} \
-            --output text \
-            --query 'StandardOutputContent'
+            --output json \
+            --query '{
+              status: Status,
+              output: StandardOutputContent,
+              error: StandardErrorContent
+            }'

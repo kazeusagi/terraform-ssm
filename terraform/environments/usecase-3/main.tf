@@ -6,9 +6,12 @@ module "iam_oidc_provider" {
 }
 
 module "github_env" {
-  source  = "../../modules/github/env"
-  name    = "dev"
-  secrets = {}
+  source = "../../modules/github/env"
+  name   = "dev"
+  secrets = {
+    ASSUME_ROLE_ARN = module.iam_oidc_provider.role_arn
+    INSTANCE_ID     = data.terraform_remote_state.usecase_1.outputs.instance_id
+  }
   variables = {
     AWS_REGION = "ap-northeast-1"
   }

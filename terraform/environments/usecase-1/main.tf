@@ -11,6 +11,6 @@ module "ec2" {
   instance_type     = "t2.micro"
   subnet_id         = module.vpc.public_subnet_id
   security_group_id = module.vpc.security_group_id
-  enable_ssh        = false
+  enable_ssh        = false # SSH を無効化
   enable_ssm        = true
 }

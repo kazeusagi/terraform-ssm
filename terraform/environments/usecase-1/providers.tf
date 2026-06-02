@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "ap-northeast-1"
-  profile = "admin"
+  profile = "ssm"
 
   default_tags {
     tags = {
